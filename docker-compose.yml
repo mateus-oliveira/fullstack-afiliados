@@ -1,21 +1,23 @@
 version: '3'
-services:
-  db:
-    image: postgres
-    environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: 95fe#wef2
-      POSTGRES_DB: codesh
-    volumes:
-      - ./data:/var/lib/postgresql/data
 
+services:
   web:
     build: .
-    command: python manage.py runserver 0.0.0.0:8000
-    volumes:
-      - .:/app
-      - ./venv:/venv
     ports:
-      - 8000:8000
+      - "8000:8000"
+    volumes:
+      - ./src:/app
     depends_on:
       - db
+    env_file:
+      - ./src/.env
+
+  db:
+    image: postgres:alpine
+    container_name: postgres_server
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_DB=django_db
+      - POSTGRES_USER=django_user
+      - POSTGRES_PASSWORD=django_password

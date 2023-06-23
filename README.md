@@ -1,19 +1,12 @@
 # Fullstack Afiliados
 
-Backend da aplicação.
+Backend with Django REST Framework.
 
-### Como executar
+### Run with Docker
  
-- Antes de mais nada, tenha certeza de ter o Docker e o Python 3.10 instalados
-- Clone este projeto e então navegue até a pasta do repositório
-- Ative um novo ambiente virtual com os seguintes comandos:
-```bash
-python3 -m venv venv
-source venv/bin/activate
-pip install -r requirements.txt
-```
-- Execute os seguintes comandos para construir as imagens e iniciar os contêineres:
-```bash
-sudo docker compose build
-sudo docker compose up -d
+- First of all, make sure to install Docker
+- Clone this project and then go to the repository directory
+- Then run that to start the project:
+```sh
+sudo docker compose up
 ```
