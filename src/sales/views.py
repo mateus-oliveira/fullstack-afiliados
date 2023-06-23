@@ -10,7 +10,9 @@ class SalesTransactionViewSet(viewsets.ModelViewSet):
     queryset = SalesTransaction.objects.all()
     serializer_class = SalesTransactionSerializer
     permission_classes = [IsAuthenticated]
+
     def create(self, request, *args, **kwargs):
+        """ That waits a file with sales information to save the content on database """
         file = request.FILES.get('file')
 
         if not file:
