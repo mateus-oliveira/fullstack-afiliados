@@ -1,4 +1,4 @@
-# Fullstack Afiliados
+# Afiliados - Backend
 
 This is the Backend side, made with Django REST Framework, of Fullstack Afiliados test: https://lab.coodesh.com/devmateusalves/fullstack-afiliados.
 
