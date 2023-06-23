@@ -10,13 +10,9 @@ class SalesTransaction(models.Model):
 
     seller = models.ForeignKey('sales.Seller', verbose_name='Seller', on_delete=models.CASCADE)
     product = models.CharField('Product Description', max_length=30)
-    price = models.PositiveIntegerField('Transaction value (in Cents)')
+    price = models.IntegerField('Transaction value (in Cents)')
     purchased_date = models.DateTimeField('Purchased Date')
     sale_type = models.PositiveSmallIntegerField('Type', choices=TYPES)
-
-    def save(self, *args, **kwargs):
-        self.product = self.product.upper()
-        super(Seller, self).save(args, kwargs)
 
 
 class Seller(models.Model):
@@ -26,7 +22,3 @@ class Seller(models.Model):
     ]
     name = models.CharField('Name', max_length=60)
     seller_type = models.PositiveSmallIntegerField('Type', choices=TYPES)
-
-    def save(self, *args, **kwargs):
-        self.name = self.name.upper()
-        super(Seller, self).save(args, kwargs)
