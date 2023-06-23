@@ -46,7 +46,7 @@ INSTALLED_APPS = [
 
     'rest_framework',
 
-    'authentication',
+    'sales',
 ]
 
 MIDDLEWARE = [
@@ -156,8 +156,6 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
-
-AUTH_USER_MODEL = "authentication.User"
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
