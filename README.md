@@ -1,6 +1,13 @@
 # Afiliados - Backend
 
-This is the Backend side, made with Django REST Framework, of Fullstack Afiliados test: https://lab.coodesh.com/devmateusalves/fullstack-afiliados.
+This is a challenge by [Coodesh](https://lab.coodesh.com/devmateusalves/fullstack-afiliados).
+
+### Technologies
+- Python 3.10
+- Docker
+- Django REST Framework
+- PostgreSQL
+
 
 ### Run with Docker
  
@@ -8,7 +15,7 @@ First of all, make sure to have Docker already installed. After you done that, g
 
 - Clone this project and then go to the repository directory
 - Make a copy of `.env.example` file and rename to `.env`
-- Change the `POSTGRES_NAME`, `POSTGRES_USER` and `POSTGRES_PASSWORD` variables with the values that you prefer of database configuration
+- Change the `POSTGRES_DB_NAME` and `POSTGRES_PASSWORD` variables with the values that you prefer of database configuration
   - Make sure to copy and paste the same values on `docker-compose.yml` into the `db` container environment variables.
 - Then run that to start the project:
 ```sh
