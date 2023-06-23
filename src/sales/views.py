@@ -2,24 +2,15 @@ import datetime
 from rest_framework import viewsets, status
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
-from rest_framework_simplejwt.views import TokenViewBase
 from .models import SalesTransaction, Seller
-from .serializers import SalesTransactionSerializer, AuthSerializer
+from .serializers import SalesTransactionSerializer
 
 
-
-class AuthViewSet(TokenViewBase):
-    serializer_class = AuthSerializer
-
-
-class SalesTransactionViewSet(viewsets.ViewSet):
+class SalesTransactionViewSet(viewsets.ModelViewSet):
     queryset = SalesTransaction.objects.all()
+    serializer_class = SalesTransactionSerializer
     permission_classes = [IsAuthenticated]
-
-    def list(self, request):
-        serializer = SalesTransactionSerializer(self.queryset, many=True)
-        return Response(serializer.data)
-    def create(self, request):
+    def create(self, request, *args, **kwargs):
         file = request.FILES.get('file')
 
         if not file:
