@@ -22,12 +22,22 @@ First of all, make sure to have Docker already installed. After you done that, g
 sudo docker compose up
 ```
 
+### Create a super user
+ 
+Create a new super user to authenticate on frontend and upload the sales file:
+Enter on Docker container bash and run the following commands:
+```sh
+sudo docker exec -it django_afiliados bash
+python manage.py createsuperuser
+```
+With the user created, do you can authenticate.
+
 ### Running commands manually
 
-If you want to run some specific command with `manage.py` script or install another lib with pip, then you need to enter the container bash terminal. Run these commands for that:
+If you want to run some specific command with `manage.py` script or install another lib with pip, then you need to enter the container bash terminal like abova. Run these commands for that:
 
 - To list all containers run `sudo docker ps`
-- Then identify the API of this project and run:  `sudo docker exec -it <container_id_or_name> bash`
+- Then identify the API of this project and run:  `sudo docker exec -it django_afiliados bash`
 - Awesome, you are able to run some commands now.
 
 Another option for you is start a new virtual environment manually to help in development. So run:
