@@ -17,6 +17,3 @@ COPY src/ .
 
 # Listen 8000 port
 EXPOSE 8000
-
-# migrate and runserver
-CMD python manage.py migrate && python manage.py runserver 0.0.0.0:8000

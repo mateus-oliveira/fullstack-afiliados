@@ -1,8 +1,19 @@
 version: '3'
 
 services:
+  db:
+    image: postgres:alpine
+    container_name: postgres_server
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_DB=${POSTGRES_DB}
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+
   web:
     build: .
+    container_name: django_afiliados
     ports:
       - "8000:8000"
     volumes:
@@ -10,14 +21,6 @@ services:
     depends_on:
       - db
     env_file:
-      - ./src/.env
-
-  db:
-    image: postgres:alpine
-    container_name: postgres_server
-    ports:
-      - 5432:5432
-    environment:
-      - POSTGRES_DB=django_db
-      - POSTGRES_USER=django_user
-      - POSTGRES_PASSWORD=django_password
+      - .env
+    command: >
+      sh -c "echo 'Please wait the migrations ran' && sleep 10 && python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
