@@ -32,6 +32,10 @@ python manage.py createsuperuser
 ```
 With the user created, do you can authenticate.
 
+### Endpoints
+
+The API endpoints were document with Swagger, and it can be accessed after run the project at http://localhost:8000/api/swagger/
+
 ### Running commands manually
 
 If you want to run some specific command with `manage.py` script or install another lib with pip, then you need to enter the container bash terminal like abova. Run these commands for that:
