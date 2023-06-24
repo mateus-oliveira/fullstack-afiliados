@@ -25,7 +25,7 @@ sudo docker compose up
 ### Create a super user
  
 Create a new super user to authenticate on frontend and upload the sales file:
-Enter on Docker container bash and run the following commands:
+Open another Terminal tab, then enter on Docker container bash by running the following commands:
 ```sh
 sudo docker exec -it django_afiliados bash
 python manage.py createsuperuser
@@ -34,7 +34,7 @@ With the user created, do you can authenticate.
 
 ### Endpoints
 
-The API endpoints were document with Swagger, and it can be accessed after run the project at http://localhost:8000/api/swagger/
+The API endpoints were document with Swagger, and it can be accessed after run the project at http://localhost:8000/swagger/
 
 ### Running commands manually
 
