@@ -8,6 +8,9 @@ class SalesTransaction(models.Model):
         (4, 'COMMISSION_RECEIVED'),
     ]
 
+    class Meta:
+        ordering = ['-id']
+
     seller = models.ForeignKey('sales.Seller', verbose_name='Seller', on_delete=models.CASCADE)
     product = models.CharField('Product Description', max_length=30)
     price = models.IntegerField('Transaction value (in Cents)')
