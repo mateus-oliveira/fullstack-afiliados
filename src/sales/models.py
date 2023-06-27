@@ -23,5 +23,9 @@ class Seller(models.Model):
         (1, 'CREATOR'),
         (2, 'AFFILIATE'),
     ]
+
+    class Meta:
+        ordering = ['name']
+
     name = models.CharField('Name', max_length=60)
     seller_type = models.PositiveSmallIntegerField('Type', choices=TYPES)
