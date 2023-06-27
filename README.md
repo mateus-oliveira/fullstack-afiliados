@@ -4,7 +4,7 @@ This is a challenge by [Coodesh](https://lab.coodesh.com/devmateusalves/fullstac
 
 ### Technologies
 - Python 3.10
-- Docker
+- Docker 24.0.2
 - Django REST Framework
 - PostgreSQL
 
