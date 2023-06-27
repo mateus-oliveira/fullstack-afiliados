@@ -1,15 +1,31 @@
 import datetime
+
+from django.db.models import Sum
 from rest_framework import viewsets, status
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
+
 from .models import SalesTransaction, Seller
-from .serializers import SalesTransactionSerializer
+from .serializers import SalesTransactionSerializer, SellerSerializer
+
+
+class SellerViewSet(viewsets.ModelViewSet):
+    queryset = Seller.objects.all()
+    serializer_class = SellerSerializer
+    permission_classes = [IsAuthenticated]
 
 
 class SalesTransactionViewSet(viewsets.ModelViewSet):
     queryset = SalesTransaction.objects.all()
     serializer_class = SalesTransactionSerializer
     permission_classes = [IsAuthenticated]
+    filterset_fields = ['seller']
+
+    def list(self, request, *args, **kwargs):
+        response = super(SalesTransactionViewSet, self).list(request, *args, **kwargs)
+        queryset = self.filter_queryset(self.get_queryset())
+        response.data['total'] = queryset.aggregate(total=Sum('price'))['total']
+        return response
 
     def create(self, request, *args, **kwargs):
         """ That waits a file with sales information to save the content on database """
